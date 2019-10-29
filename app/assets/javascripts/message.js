@@ -1,13 +1,14 @@
 $(function() {
 
   function buildHTML(message){
-    image = ""
-    content = ""
+    var image = ""
+    var content = ""
 
-    if ( message.image ){
+    if ( message.image, message.content ){
         image = `<img src="${message.image}" >`
         content = `<p>${ message.content }</p>`
     } 
+    
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
