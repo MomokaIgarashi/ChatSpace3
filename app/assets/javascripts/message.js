@@ -1,7 +1,13 @@
 $(function() {
 
   function buildHTML(message){
+    image = ""
+    content = ""
 
+    if ( message.image ){
+        image = `<img src="${message.image}" >`
+        content = `<p>${ message.content }</p>`
+    } 
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -12,11 +18,10 @@ $(function() {
                     </div>
                   </div>
                   <div class="lower-message">
-                    <div class ="lower-message__image">
-                      ${ message.image}
-                    </div>
+                    ${image}
+                    
                     <p class="lower-message__content">
-                      ${ message.content }
+                      ${content}
                     </p>
                   </div>
                 </div>`;
