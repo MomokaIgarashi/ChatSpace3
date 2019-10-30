@@ -27,28 +27,28 @@ $(function() {
     .fail(function() {
         alert('ユーザー検索に失敗しました');
     });
-});
+  });
 
-$(document).on('turbolinks:load', function(){
+  $(document).on('turbolinks:load', function(){
 
   var search_list = $("#user-search-result");
   var member_list = $("#member-append");
 
-  function appendUser(user){
-      var html = 
+    function appendUser(user){
+        var html = 
                   `<div class="chat-group-user clearfix">
                       <p class="chat-group-user__name">${user.name}</p>
                       <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>追加</div>
                   </div>`;
                   search_list.append(html);
-  }
+    }
 
-  function appendErrMsgToHTML(msg){
-      var html = 
+    function appendErrMsgToHTML(msg){
+        var html = 
                   `<div class="chat-group-user clearfix">
                       <p class="chat-group-user__name">${msg}</p>
                   </div>`;
                   search_list.append(html);
-  }
- })
+    }
+  })
 });
