@@ -63,28 +63,6 @@ $(function() {
   })
 
   $(document).on('turbolinks:load', function(){
-      function buildHTML(message) {
-        var content = message.content ? `${ message.content }` : "";
-        var img  = message.image ? `<img class="lower-info__image" src="${ message.image }">` : "";
-        var html = `<div class="message" data-message-id="${message.id}">
-                      <div class="upper-info">
-                        <p class="upper-info__user">
-                          ${message.user_name}
-                        </p>
-                        <p class="upper-info__date">
-                          ${message.date}
-                        </p>
-                      </div>
-                        <div class="lower-info">
-                          <p class="lower-info__content">
-                              ${content}
-                          </p>
-                              ${img}
-                        </div>
-                    </div>`
-      return html;
-      }
-
       var reloadMessages = function(){
         if (window.location.href.match(/\/groups\/\d+\/messages/)){    
           var href = 'api/messages#index {:format=>"json"}'              
