@@ -29,21 +29,26 @@ $(function() {
     });
 });
 
+$(document).on('turbolinks:load', function(){
 
+  var search_list = $("#user-search-result");
+  var member_list = $("#member-append");
 
-function  buildHTML(users){
- if  
-  var html = `
-            <div class="chat-group-user clearfix">
-              <p class="chat-group-user__name">${user_name}</p>
-              <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="ユーザーのid" data-user-name="ユーザー名">追加</div>
-            </div>
-            `
-}
+  function appendUser(user){
+      var html = 
+                  `<div class="chat-group-user clearfix">
+                      <p class="chat-group-user__name">${user.name}</p>
+                      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>追加</div>
+                  </div>`;
+                  search_list.append(html);
+  }
 
- else
-  var html = `
-             <div class="chat-group-user clearfix">
-              <p class="chat-group-user__name">ユーザーが見つかりません</p>
-             </div>`
-}
+  function appendErrMsgToHTML(msg){
+      var html = 
+                  `<div class="chat-group-user clearfix">
+                      <p class="chat-group-user__name">${msg}</p>
+                  </div>`;
+                  search_list.append(html);
+  }
+ })
+});
