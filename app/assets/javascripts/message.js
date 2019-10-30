@@ -8,7 +8,7 @@ $(function() {
         image = `<img src="${message.image}" >`
         content = `<p>${ message.content }</p>`
     } 
-    
+
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -60,5 +60,34 @@ $(function() {
         alert('error')
         $('.form__submit').prop('disabled', false);
     })
+  })
+
+  $(document).on('turbolinks:load', function(){
+      var reloadMessages = function(){
+        if (window.location.href.match(/\/groups\/\d+\/messages/)){    
+          var href = 'api/messages#index {:format=>"json"}'              
+          var last_message_id = $('.message:last').data('message-id');   
+    
+          $.ajax({
+            url:  href,
+            type: 'GET',
+            data: {id: last_message_id},
+            dataType: 'json'
+          })
+    
+          .done(function(messages){      
+            var insertHTML='';
+              messages.forEach(function(message){
+                insertHTML = buildHTML(message);
+                $('.messages').append(insertHTML);
+                $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+              });
+          })
+          .fail(function(){
+            alert("自動更新に失敗しました")
+          });
+        };
+      };
+      setInterval(reLoadMessages, 5000);
   })
 })
