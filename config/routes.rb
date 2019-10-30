@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get  'chat_groups'  =>  'groups#' 
   
 
-  resources :users, only: [:index, :edit, :update] 
+  resources :users, only: [:index, :edit, :update, :show] 
   resources :groups, only: [:new, :create, :edit, :update] do
     resources :messages, only: [:index, :create] 
    end
