@@ -34,10 +34,13 @@
   }
 
   .messages {
+    overflow: scroll;
     background-color: #FAFAFA;
     box-sizing: border-box;
     padding: 46px 40px 0;
-    height: calc(100% - 100px - 90px);
+    height: calc(100vh - 190px);
+    
+
     .message {
       .upper-message {
         display: flex;
@@ -63,6 +66,7 @@
     }
   }
 
+  
   .form {
     background-color: #DDDDDD;
     box-sizing: border-box;

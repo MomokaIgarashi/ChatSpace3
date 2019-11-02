@@ -3,7 +3,7 @@ class Api::MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @messages = @group.messages.includes(:user).where('id > ?', params[:id])
 
-    responde_to do |format|
+    respond_to do |format|
         format.html
         format.json
     end
