@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   def new
   @group = Group.new
   @group.users << current_user
+  @users = User.where.not(id: current_user)
    
  end
 
@@ -23,6 +24,7 @@ class GroupsController < ApplicationController
 
  def edit
   @users = User.where.not(id: current_user)
+
  end
 
  def update
