@@ -6,7 +6,7 @@ lock '3.11.2'
 set :application, 'ChatSpace3'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:<MomokaIgarashi>/<ChatSpace3>.git'
+set :repo_url,  'git@github.com:MomokaIgarashi/ChatSpace3.git'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -32,3 +32,10 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
