@@ -29,11 +29,13 @@
           %p.chat-group-user__name= current_user.name
 
 
-          - @users.each do |user|
-            .chat-group-user.clearfix.js-chat-member#chat-group-user-8
-            %input{name: "group[user_ids][]", type: "hidden", value: user.id}
-            %p.chat-group-user__name= user.name
-            .user-search-deletion.chat-group-user__btn.chat-group-user__btn--add Delete
+          - group.users.each do |user|
+            - if current_user.id != user.id
+              .chat-group-user.clearfix.js-chat-member#chat-group-user-8
+              %input{name: "group[user_ids][]", type: "hidden", value: user.id}
+              %p.chat-group-user__name= user.name
+
+              .user-search-deletion.chat-group-user__btn.chat-group-user__btn--add Delete
 
 
           
