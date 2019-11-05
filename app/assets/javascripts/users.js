@@ -9,7 +9,7 @@ $(function() {
         var html = 
                   `<div class="chat-group-user clearfix">
                       <p class="chat-group-user__name">${user.name}</p>
-                      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>Add</div>
+                      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>追加</div>
                   </div>`;
                   search_list.append(html);
     }
@@ -27,7 +27,7 @@ $(function() {
         var html = 
                   `<div class="chat-group-user clearfix">
                       <p class="chat-group-user__name">${name}</p>
-                      <div class="user-search-deletion chat-group-user__btn chat-group-user__btn--add" data-user-id=${id} data-user-name=${name}>Delete</div>
+                      <div class="user-search-deletion chat-group-user__btn chat-group-user__btn--add" data-user-id=${id} data-user-name=${name}>削除</div>
                       <input name="group[user_ids][]" type="hidden" value=${id}"></input>
                   </div>`;
                   member_list.append(html);
