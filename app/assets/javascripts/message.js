@@ -1,5 +1,5 @@
+$(document).on('turbolinks:load', function(){
 $(function() {
-
   function buildHTML(message){
    var image = message.image? `<img src="${message.image}" >`: '' ;
 
@@ -30,11 +30,8 @@ $(function() {
   // }
 
   $('#new_message').on('submit', function(e) {
-    
     e.preventDefault();
-    
     var formData = new FormData(this);
-    
     var url = $(this).attr('action');
     $.ajax({
       url: url, 
@@ -88,3 +85,4 @@ $(function() {
   //     setInterval(reLoadMessages, 5000);
   // })
 })
+});
