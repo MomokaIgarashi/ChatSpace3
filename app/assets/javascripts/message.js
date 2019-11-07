@@ -58,9 +58,14 @@ $(function() {
   // $(document).on('turbolinks:load', function(){
 
       var reLoadMessages = function(){
-        if (window.location.href.match(/\/groups\/\d+\/messages/)){    
-          var href = 'api/messages#index {:format=>"json"}'              
-          var last_message_id = $('.message:last').data('message-id');   
+        if (window.location.href.match(/\/groups\/\d+\/messages/)){
+          var href = 'api/messages#index {:format=>"json"}'
+           if($("div").hasClass("message")){
+            var last_message_id = $('.message:last').data('message-id');
+            } else {
+            var last_message_id = 0
+            }
+
           $.ajax({
             url:  href,
             type: 'GET',
@@ -74,7 +79,6 @@ $(function() {
                 insertHTML = buildHTML(message);
                 $('.messages').append(insertHTML);
                 $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-                console.log(message)
               });
           })
           .fail(function(){
