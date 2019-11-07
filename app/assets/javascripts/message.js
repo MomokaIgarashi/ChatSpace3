@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-$(function() {
   function buildHTML(message){
    var image = message.image? `<img src="${message.image}" >`: '' ;
 
@@ -62,7 +61,8 @@ $(function() {
           var href = 'api/messages#index {:format=>"json"}'
            if($("div").hasClass("message")){
             var last_message_id = $('.message:last').data('message-id');
-            } else {
+            } 
+            else {
             var last_message_id = 0
             }
 
@@ -81,6 +81,9 @@ $(function() {
                 $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
               });
           })
+
+        
+
           .fail(function(){
             alert("自動更新に失敗しました")
           });
@@ -88,5 +91,4 @@ $(function() {
       };
       setInterval(reLoadMessages, 5000);
       
-  })
-});
+  });
