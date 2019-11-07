@@ -15,10 +15,15 @@
       font-weight: bold;
     }
     &__lists {
-      float: right;
-      // display: inline-block;
+      // justify-content: right;
+      // display: inline-block;s
+      display: inline-block;
+      text-align: right;
+
       .list {
+        // display: flex;
         display: inline-block;
+        // text-align: right;
       }
       .icon {
         color: $white;
